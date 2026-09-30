@@ -208,6 +208,13 @@
         n.classList.toggle('fail', !!s.fail);
         n.classList.toggle('faded', dim.includes(n.id));
       });
+      // narrow screens: map side-scrolls -> bring first active box into view
+      const stage = document.querySelector('#map .stage'), hit = allNodes.find(n => on.includes(n.id));
+      if (stage && hit && stage.scrollWidth > stage.clientWidth) {
+        const sb = stage.getBoundingClientRect(), hb = hit.getBoundingClientRect();
+        const pad = hb.width < sb.width ? (sb.width - hb.width) / 2 : 12;  // centre if it fits, else left-align
+        stage.scrollLeft += hb.left - sb.left - pad;
+      }
       history.replaceState(null, '', '#step-' + (i + 1));
     }
 

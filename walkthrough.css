@@ -337,3 +337,14 @@ section p { max-width: 72ch; }
 .wrap { max-width: 1240px; }
 header { border-top: 3px solid var(--brand); padding-top: 18px; }
 .cap { font-size: 14px; color: var(--ink-2); }
+
+/* phone: map keeps readable text and side-scrolls (JS centres the active box) */
+.nav button { white-space: nowrap; }
+@media (max-width: 600px) {
+  .wrap { padding: 32px 16px 64px; gap: 44px; }
+  .panel { padding: 16px; }
+  .eli5, .insight { padding: 18px; }
+  .stage { padding: 12px 8px; }
+  .stage svg { min-width: 820px; }
+  .nav .kbd { display: none; }
+}
