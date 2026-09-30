@@ -1,5 +1,5 @@
 /* walkthrough kit: every style a walkthrough page needs. Pages carry content only.
-   Theme override: link themes/<name>.css after this file; it only redefines variables. */
+   Theme override: link themes/<name>.css after this file; it redefines variables + font/radius/shadow tweaks. */
 
 :root {
   --ground: #F6F7F9;

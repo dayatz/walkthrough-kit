@@ -1,6 +1,45 @@
-/* Janio theme: brand cyan #0caadc (janio-logistic-portal $primary). Variables only. */
-:root { --brand: #0CAADC; --deep: #08739A; --deep-bg: #E4F5FB; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) { --deep: #5FD0F0; --deep-bg: #0E2A35; }
+/* Janio theme: tokens from janio-logistic-portal src/features/theme/tokens.ts.
+   Portal has no dark mode -> dark derived from its indigo tints (#BEBEFF, #3333D0). */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap");
+
+:root {
+  --brand: #050593;      /* brand.colorPrimary */
+  --ground: #F7F8FC;     /* layout.colorBgLayout */
+  --surface: #FFFFFF;    /* neutral.colorBgContainer */
+  --surface-2: #EFF1F6;  /* layout.colorBgMain */
+  --ink: #232323;        /* neutral.colorText */
+  --ink-2: #6F737C;      /* neutral.colorTextSubtle */
+  --rule: #DDE2EA;       /* neutral.colorBorder */
+  --deep: #050593;       /* brand.colorPrimary */
+  --deep-bg: #E5EEFE;    /* stepTone.finish.bg */
+  --keep: #27A62F;       /* status.colorSuccess */
+  --keep-bg: #E5F4E6;
+  --lost: #F5222D;       /* status.colorError */
+  --lost-bg: #FDE4E5;
+  --warn: #FA7F14;       /* statusTone.orange: readable text, colorWarning #FAAD14 is too light */
+  --warn-bg: #FEF5E2;    /* status.colorWarningBg */
 }
-:root[data-theme="dark"] { --deep: #5FD0F0; --deep-bg: #0E2A35; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --brand: #3333D0; --ground: #0E0F16; --surface: #16171F; --surface-2: #1E2029;
+    --ink: #EBECF0; --ink-2: #9499A5; --rule: #2C2E3A;
+    --deep: #BEBEFF; --deep-bg: #1C1C4A;
+    --keep: #5CCB63; --keep-bg: #10261A; --lost: #FF4D4F; --lost-bg: #2E1417;
+    --warn: #FFA24D; --warn-bg: #2B2010;
+  }
+}
+:root[data-theme="dark"] {
+  --brand: #3333D0; --ground: #0E0F16; --surface: #16171F; --surface-2: #1E2029;
+  --ink: #EBECF0; --ink-2: #9499A5; --rule: #2C2E3A;
+  --deep: #BEBEFF; --deep-bg: #1C1C4A;
+  --keep: #5CCB63; --keep-bg: #10261A; --lost: #FF4D4F; --lost-bg: #2E1417;
+  --warn: #FFA24D; --warn-bg: #2B2010;
+}
+
+body { font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+h1, h2, h3 { color: var(--ink); font-weight: 600; }  /* typography.fontWeightStrong */
+.card, .stat, .panel, .stage, .overview, .tbl-wrap {
+  border-radius: 8px;  /* radius.borderRadiusLG */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.02), 0 1px 6px -1px rgba(0,0,0,0.02), 0 1px 2px rgba(0,0,0,0.03);  /* shadow.boxShadowTertiary */
+}
+:focus-visible { outline-color: #BEBEFF; }  /* focusRing.color */
