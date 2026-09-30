@@ -1,0 +1,6 @@
+/* Janio theme: brand cyan #0caadc (janio-logistic-portal $primary). Variables only. */
+:root { --brand: #0CAADC; --deep: #08739A; --deep-bg: #E4F5FB; }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --deep: #5FD0F0; --deep-bg: #0E2A35; }
+}
+:root[data-theme="dark"] { --deep: #5FD0F0; --deep-bg: #0E2A35; }
