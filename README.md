@@ -15,5 +15,5 @@ The page defines `OVERVIEW` (mermaid string), `MAP` and `STEPS` in a plain `<scr
 
 Themes live in `themes/` and only redefine CSS variables (`--brand`, `--deep`, `--deep-bg`, …).
 
-Release: commit, then `git tag v1.x.y && git push --tags`. Pages pin `@1`, so breaking changes need `v2`.
+Release: commit, then `git tag v1.x.y && git push origin main v1.x.y`. Pages pin `@1`, so breaking changes need `v2`.
 jsDelivr caches `@1` for up to 7 days; purge with `curl https://purge.jsdelivr.net/gh/dayatz/walkthrough-kit@1/<file>`.
