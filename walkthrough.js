@@ -227,6 +227,11 @@
     });
     const h = parseInt((location.hash.match(/^#step-(\d+)$/) || [])[1], 10);
     go(h >= 1 && h <= steps.length ? h - 1 : 0);
+    // in-page <a href="#step-N"> links (e.g. inside a step body) jump the stepper; go() uses replaceState -> no loop
+    window.addEventListener('hashchange', () => {
+      const n = parseInt((location.hash.match(/^#step-(\d+)$/) || [])[1], 10);
+      if (n >= 1 && n <= steps.length) go(n - 1);
+    });
     wireTheme(renderOverview, () => { const i = cur; cur = -1; go(i); });
   }
 
