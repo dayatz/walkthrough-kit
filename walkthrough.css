@@ -131,6 +131,8 @@ code.inl {
   font-size: 0.88em; background: var(--surface-2);
   border: 1px solid var(--rule); border-radius: 3px; padding: 1px 5px;
 }
+/* long snake_case names have no break points -> widen the page on phones */
+code.inl, footer .mono { overflow-wrap: anywhere; }
 
 /* cards + callouts */
 .card {
