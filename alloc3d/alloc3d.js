@@ -179,7 +179,10 @@ for (const j of JOBS) jobDrawers[j].a = actor(jobDrawers[j].mesh);
 // crates (+ one lookup token each) are rebuilt per scenario: pool size differs
 let crates = [], builtFor = null, prevPh = null;
 function buildCrates(s) {
-  for (const a of crates) for (const x of [a, a.tok].filter(Boolean)) { scene.remove(x.mesh); actors.splice(actors.indexOf(x), 1); }
+  for (const a of crates) {
+    a.el.remove();  // CSS2D only drops the label of the removed object itself, not of its children
+    for (const x of [a, a.tok].filter(Boolean)) { scene.remove(x.mesh); actors.splice(actors.indexOf(x), 1); }
+  }
   let n = 0;
   crates = layout(s).map(c => {
     const a = actor(box(s.size, s.size, s.size, c.foreign ? C.brand : C.card, { x: c.pad[0], y: s.size / 2 + .2, z: c.pad[1] }));
