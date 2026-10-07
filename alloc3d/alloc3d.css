@@ -1,0 +1,59 @@
+/* alloc3d: isometric 3D "how allocation works" scene. Link after walkthrough.css (+ theme).
+   Page markup: .a3d > aside (header, .eli5, #a3d-ui, footer) + #a3d-stage. Data: window.ALLOC3D. */
+
+.a3d { position: fixed; inset: 0; display: grid; grid-template-columns: 400px 1fr; }
+.a3d > * { min-width: 0; }  /* canvas px width must not widen the grid column */
+.a3d aside { overflow: auto; padding: 22px 22px 28px; display: flex; flex-direction: column; gap: 16px;
+  border-right: 1px solid var(--rule); background: var(--surface); }
+.a3d aside h1 { font-size: 24px; }
+.a3d aside .eli5 { padding: 18px 20px; }
+.a3d aside .eli5 p { font-size: 15.5px; }
+.a3d footer { font-size: 12px; }
+#a3d-ui { display: flex; flex-direction: column; gap: 14px; }
+
+.a3d .scen { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: 6px; }
+.a3d .scen button, .a3d .ctrl button { font: inherit; font-size: 13px; padding: 7px 9px; border-radius: 8px; cursor: pointer;
+  border: 1px solid var(--rule); background: var(--surface-2); color: var(--ink); text-align: left; line-height: 1.3; }
+.a3d .scen button[aria-pressed="true"] { border-color: var(--brand); background: var(--deep-bg); }
+.a3d .scen button small { display: block; color: var(--ink-2); font-size: 11px; margin-top: 2px; }
+.a3d .ctrl { display: flex; gap: 6px; align-items: center; }
+.a3d .ctrl button { text-align: center; min-width: 44px; }
+.a3d .ctrl .play { background: var(--brand); border-color: var(--brand); color: #fff; }
+.a3d .dots { display: flex; gap: 5px; margin-left: auto; }
+.a3d .dots i { width: 8px; height: 8px; border-radius: 50%; background: var(--rule); cursor: pointer; }
+.a3d .dots i.on { background: var(--brand); }
+
+.a3d .step h2 { font-size: 18px; margin: 4px 0 6px; }
+.a3d .step p { font-size: 14.5px; line-height: 1.55; margin: 0; }
+.a3d .step p + p { margin-top: 6px; }
+.a3d .step .ref { margin-top: 8px; font-size: 12px; color: var(--ink-2); }
+.a3d .step code, .a3d .sql { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px; }
+.a3d .sql { white-space: pre-wrap; background: var(--surface-2); border-radius: 8px; padding: 10px; color: var(--ink-2); margin-top: 6px; }
+
+#a3d-stage { position: relative; min-height: 0; overflow: hidden; }
+#a3d-stage canvas { display: block; }
+#a3d-stage .labels { position: absolute; inset: 0; pointer-events: none; }
+#a3d-stage .hint { font-size: 12px; color: var(--ink-2); position: absolute; right: 14px; bottom: 10px; }
+
+/* 3D labels */
+.a3d .lbl { font-size: 12px; line-height: 1.3; background: var(--surface); color: var(--ink); border: 1px solid var(--rule);
+  padding: 3px 8px; border-radius: 6px; white-space: nowrap; box-shadow: 0 2px 6px rgb(0 0 0 / .08);
+  transition: opacity .3s, background .3s, border-color .3s; }
+.a3d .lbl b { font-weight: 650; }
+.a3d .lbl small { display: block; color: var(--ink-2); font-size: 10.5px; }
+.a3d .lbl.keep { border-color: var(--keep); background: var(--keep-bg); }
+.a3d .lbl.lost { border-color: var(--lost); background: var(--lost-bg); }
+.a3d .lbl.deep { border-color: var(--deep); background: var(--deep-bg); }
+.a3d .lbl.warn { border-color: var(--warn); background: var(--warn-bg); }
+.a3d .lbl.big { font-size: 13px; padding: 5px 10px; }
+.a3d .lbl.q3 { font-weight: 650; }
+.a3d .lbl.chain { display: grid; grid-template-columns: auto auto; gap: 1px 14px; padding: 7px 10px; }
+.a3d .lbl.chain b { grid-column: 1 / -1; margin-bottom: 3px; }
+.a3d .lbl.chain span { color: var(--ink-2); }
+.a3d .lbl.chain span.on { color: var(--keep); font-weight: 650; }
+
+@media (max-width: 860px) {
+  .a3d { position: static; grid-template-columns: 1fr; grid-template-rows: 58vh auto; }
+  #a3d-stage { order: -1; height: 58vh; }
+  .a3d aside { border-right: 0; border-top: 1px solid var(--rule); }
+}
