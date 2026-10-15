@@ -1,5 +1,5 @@
-/* walkthrough kit runtime. Page defines globals OVERVIEW, MAP, STEPS (see README.md);
-   this file renders theme toggle, overview mermaid, SVG map, stepper. */
+/* walkthrough kit runtime. Page defines globals ELI5, OVERVIEW, MAP, STEPS (see README.md);
+   this file renders theme toggle, ELI5 + overview mermaid, SVG map, stepper. */
 (function () {
   const THEME_KEY = 'artifact-theme';
   const esc = s => String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -152,7 +152,14 @@
 
     const ov = $('overview');
     if (ov) ov.classList.add('overview');
-    const renderOverview = () => { if (ov && ovSrc) mountMmd(ov, ovSrc); };
+    // ELI5 diagram: optional, plain-words mermaid inside the .eli5 box
+    const eliSrc = typeof ELI5 !== 'undefined' ? ELI5 : null;
+    const eli = $('eli5-dia');
+    if (eli) eli.classList.add('eli5-dia');
+    const renderOverview = () => {
+      if (ov && ovSrc) mountMmd(ov, ovSrc);
+      if (eli && eliSrc) mountMmd(eli, eliSrc);
+    };
     renderOverview();
 
     let laneIds = [];

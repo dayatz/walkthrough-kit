@@ -10,8 +10,8 @@ so a single `.html` file renders anywhere, with no local assets needed.
 <script defer src="https://cdn.jsdelivr.net/gh/dayatz/walkthrough-kit@1/walkthrough.js"></script>
 ```
 
-The page defines `OVERVIEW` (mermaid string), `MAP` and `STEPS` in a plain `<script>` block and places
-`<div id="overview">`, `<div id="map">` and `<div id="stepper">` where they should render.
+The page defines `ELI5` and `OVERVIEW` (mermaid strings), `MAP` and `STEPS` in a plain `<script>` block and places
+`<div id="eli5-dia">` (inside `.eli5`), `<div id="overview">`, `<div id="map">` and `<div id="stepper">` where they should render.
 
 Themes live in `themes/`: CSS variables (`--brand`, `--deep`, …) plus font/radius/shadow overrides, sourced from the company design system.
 

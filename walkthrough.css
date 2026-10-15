@@ -113,6 +113,10 @@ p { margin: 0; max-width: 66ch; }
 }
 .eli5 .tag5::before { content: ""; width: 18px; height: 2px; background: var(--deep); display: inline-block; }
 .eli5 p { font-size: 16.5px; line-height: 1.6; color: var(--ink); max-width: 64ch; }
+.eli5-dia {
+  background: var(--surface); border: 1px solid var(--rule); border-radius: 6px;
+  padding: 12px; overflow-x: auto; display: flex; justify-content: center;
+}
 
 /* code */
 pre {
